@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "./TestViewController.h"
 
 @interface ViewController ()
 
@@ -25,10 +26,15 @@
 //    
 //    
 //    NSLog(@"first view controller.");
+    
+    UITabBarController *tabbarController = [UITabBarController new];
+    
+     
         
     
-    UIViewController *controller1 = [UIViewController new];
-    controller1.view.backgroundColor = [UIColor redColor];
+    UIViewController *controller1 = [TestViewController new];
+
+//    controller1.view.backgroundColor = [UIColor redColor];
     controller1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"新闻" image:[UIImage systemImageNamed:@"house"] selectedImage:[UIImage systemImageNamed:@"house.fill"]];
     
     UIViewController *controller2 = [UIViewController new];
@@ -43,9 +49,11 @@
     controller4.view.backgroundColor = [UIColor yellowColor];
     controller4.tabBarItem = [[UITabBarItem alloc] initWithTitle: @"我的" image:[UIImage systemImageNamed:@"gear"] selectedImage:[UIImage systemImageNamed:@"gear.fill"]];
     
-    [self setViewControllers:@[controller1, controller2, controller3, controller4]];
+    [tabbarController setViewControllers:@[controller1, controller2, controller3, controller4]];
     
-    self.tabBar.backgroundColor = [UIColor lightGrayColor];
+    tabbarController.tabBar.backgroundColor = [UIColor lightGrayColor];
+    
+    [self initWithRootViewController:tabbarController];
 
 }
 
