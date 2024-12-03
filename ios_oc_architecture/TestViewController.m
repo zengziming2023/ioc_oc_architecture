@@ -8,7 +8,7 @@
 #import "TestViewController.h"
 #import "Test2ViewController.h"
 
-@interface TestViewController ()
+@interface TestViewController () <UITableViewDataSource>
 
 @end
 
@@ -19,14 +19,20 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    UIView *uiView = [UIView new];
-    uiView.frame = CGRectMake(150, 150, 100, 100);
-    uiView.backgroundColor = [UIColor greenColor];
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushController)];
-    [uiView addGestureRecognizer:tapGesture];
+//    UIView *uiView = [UIView new];
+//    uiView.frame = CGRectMake(150, 150, 100, 100);
+//    uiView.backgroundColor = [UIColor greenColor];
+//    
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushController)];
+//    [uiView addGestureRecognizer:tapGesture];
+//    
+//    [self.view addSubview:uiView];
     
-    [self.view addSubview:uiView];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
+    tableView.dataSource = self;
+    
+    [self.view addSubview:tableView];
     
 }
 
@@ -34,6 +40,19 @@
     NSLog(@"push Controller...");
     [self.navigationController pushViewController:[Test2ViewController new] animated:YES];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *tableViewCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"id"];
+    tableViewCell.textLabel.text = @"主标题";
+    tableViewCell.imageView.image = [UIImage systemImageNamed:@"house"];
+    
+    return tableViewCell;
+}
+
 
 /*
 #pragma mark - Navigation
