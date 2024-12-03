@@ -8,7 +8,7 @@
 #import "ViewController.h"
 #import "./TestViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITabBarControllerDelegate>
 
 @end
 
@@ -53,9 +53,16 @@
     
     tabbarController.tabBar.backgroundColor = [UIColor lightGrayColor];
     
+    tabbarController.delegate = self;
+    
     [self initWithRootViewController:tabbarController];
 
 }
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    NSLog(@"select view controller: %@", viewController);
+}
+
 
 
 @end
