@@ -8,7 +8,7 @@
 #import "TestViewController.h"
 #import "Test2ViewController.h"
 
-@interface TestViewController () <UITableViewDataSource>
+@interface TestViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -31,6 +31,7 @@
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
     tableView.dataSource = self;
+    tableView.delegate = self;
     
     [self.view addSubview:tableView];
     
@@ -50,12 +51,31 @@
     if(!tableViewCell){
         tableViewCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"id"];
     }
-    tableViewCell.textLabel.text = @"主标题";
+    tableViewCell.textLabel.text = [NSString stringWithFormat:@"主标题 - %@", @(indexPath.row)];
     tableViewCell.imageView.image = [UIImage systemImageNamed:@"house"];
     
     return tableViewCell;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 0){
+        return 100;
+    } else {
+        return 50;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog([NSString stringWithFormat:@"主标题 - %@", @(indexPath.row)]);
+    UIViewController *controller = [UIViewController new];
+    controller.title = [NSString stringWithFormat:@"%@", @(indexPath.row)];
+    controller.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    
+}
 
 /*
 #pragma mark - Navigation
