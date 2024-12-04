@@ -46,7 +46,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *tableViewCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"id"];
+    UITableViewCell *tableViewCell = [tableView dequeueReusableCellWithIdentifier:@"id"];
+    if(!tableViewCell){
+        tableViewCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"id"];
+    }
     tableViewCell.textLabel.text = @"主标题";
     tableViewCell.imageView.image = [UIImage systemImageNamed:@"house"];
     
