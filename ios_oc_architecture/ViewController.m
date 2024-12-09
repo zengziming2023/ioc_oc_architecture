@@ -6,7 +6,8 @@
 //
 
 #import "ViewController.h"
-#import "./TestViewController.h"
+#import "TestViewController.h"
+#import "GTVideoViewController.h"
 
 @interface ViewController () <UITabBarControllerDelegate>
 
@@ -37,9 +38,9 @@
 //    controller1.view.backgroundColor = [UIColor redColor];
     controller1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"新闻" image:[UIImage systemImageNamed:@"house"] selectedImage:[UIImage systemImageNamed:@"house.fill"]];
     
-    UIViewController *controller2 = [UIViewController new];
-    controller2.view.backgroundColor = [UIColor greenColor];
-    controller2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"视频" image:[UIImage systemImageNamed:@"gear"] selectedImage:[UIImage systemImageNamed:@"gear.fill"]];
+    UIViewController *gtVideoViewController = [GTVideoViewController new];
+//    gtVideoViewController.view.backgroundColor = [UIColor greenColor];
+    gtVideoViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"视频" image:[UIImage systemImageNamed:@"gear"] selectedImage:[UIImage systemImageNamed:@"gear.fill"]];
     
     UIViewController *controller3 = [UIViewController new];
     controller3.view.backgroundColor = [UIColor blueColor];
@@ -49,7 +50,7 @@
     controller4.view.backgroundColor = [UIColor yellowColor];
     controller4.tabBarItem = [[UITabBarItem alloc] initWithTitle: @"我的" image:[UIImage systemImageNamed:@"gear"] selectedImage:[UIImage systemImageNamed:@"gear.fill"]];
     
-    [tabbarController setViewControllers:@[controller1, controller2, controller3, controller4]];
+    [tabbarController setViewControllers:@[controller1, gtVideoViewController, controller3, controller4]];
     
     tabbarController.tabBar.backgroundColor = [UIColor lightGrayColor];
     
