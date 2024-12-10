@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "TestViewController.h"
 #import "GTVideoViewController.h"
+#import "GTRecommandViewController.h"
 
 @interface ViewController () <UITabBarControllerDelegate>
 
@@ -42,8 +43,8 @@
 //    gtVideoViewController.view.backgroundColor = [UIColor greenColor];
     gtVideoViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"视频" image:[UIImage systemImageNamed:@"gear"] selectedImage:[UIImage systemImageNamed:@"gear.fill"]];
     
-    UIViewController *controller3 = [UIViewController new];
-    controller3.view.backgroundColor = [UIColor blueColor];
+    UIViewController *controller3 = [GTRecommandViewController new];
+//    controller3.view.backgroundColor = [UIColor blueColor];
     controller3.tabBarItem = [[UITabBarItem alloc] initWithTitle: @"推荐" image:[UIImage systemImageNamed:@"gear"] selectedImage:[UIImage systemImageNamed:@"gear.fill"]];
     
     UIViewController *controller4 = [UIViewController new];
